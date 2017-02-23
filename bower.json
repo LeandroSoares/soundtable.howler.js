@@ -1,0 +1,20 @@
+{
+  "name": "soundtable.howler.js",
+  "main": "soundtable.howler.js",
+  "homepage": "https://github.com/LeandroSoares/soundtable.howler.js",
+  "authors": [
+    "Leandro Soares <leandrogamedesigner@gmail.com>"
+  ],
+  "description": "A sound table do help manage Howler instances",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "howler.js": "howler#^2.0.2"
+  }
+}

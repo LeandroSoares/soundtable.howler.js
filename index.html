@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="K Interativa">
+
+        <title>Soundtable.howler</title>
+    </head>
+    <body class="onepage-pagination-hidden">
+        <ul id='soundlist'></ul>
+    </body>
+
+    <script type="text/javascript" src="bower_components/howler.js/dist/howler.min.js"></script>
+    <script type="text/javascript" src="soundtable.howler.js"></script>
+
+    <script type="text/javascript">
+        (function () {
+            //exemplo de caregamento e uso de sons
+
+            // aqui temos uma lista de sons para serem tocados
+            // name: "nome do som para mandar tocar"
+            // howl: estrutura de configuração do Howler (ver documentacao do Howler: https://github.com/goldfire/howler.js)
+
+            var sounds=[{name:"Dogs",howl:{src:["dogs.mp3"]}},
+                        {name:"Grilos",howl:{src:["grilos.mp3"]}},
+                        {name:"Sapos",howl:{src:["sapos.mp3"]}}];
+
+            //Adicionando colecao de sons para carregamento na mesa de som
+            Soundtable.addSoundCollection(sounds);
+
+            function playSound(soundname){
+                Soundtable.stopAllSounds();
+                Soundtable.play(soundname);
+            }
+
+            buttonCont=document.getElementById('soundlist');
+
+            Soundtable.iterate(function (name, howl) {
+                var li= document.createElement("li");
+                    li.append('Som '+name+" ");
+
+                var btn = document.createElement("button");
+                    btn.append('Play');
+                    btn.onclick = playSound.bind(null,name);
+
+                    buttonCont.appendChild(li);
+                    li.appendChild(btn);
+            });
+
+            var li= document.createElement("li");
+            var btn = document.createElement("button");
+                btn.append('STOP ALL SOUNDS');
+                btn.onclick = Soundtable.stopAllSounds;
+
+                buttonCont.appendChild(li);
+                li.appendChild(btn);
+
+        })();
+    </script>
+</html>
